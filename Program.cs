@@ -1,8 +1,15 @@
+using System.Device.Gpio;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-
+builder.Services.AddSingleton<GpioController>(s =>
+{
+    var controller = new GpioController();
+    controller.OpenPin(18, PinMode.Output);
+    return controller;
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

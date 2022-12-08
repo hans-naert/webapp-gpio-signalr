@@ -1,9 +1,11 @@
 using System.Device.Gpio;
+using MyApp.Namespace;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddSignalR();
 builder.Services.AddSingleton<GpioController>(s =>
 {
     var controller = new GpioController();
@@ -28,5 +30,6 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+app.MapHub<OutputHub>("/outputHub");
 
 app.Run();

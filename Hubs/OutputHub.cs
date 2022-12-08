@@ -2,12 +2,23 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace MyApp.Namespace
 {
-    public class OutputHub : Hub
+    public interface IOutput
     {
+        Task OutputChanged(bool value);
+    }
+
+    public class OutputHub : Hub<IOutput>
+    {
+
+        public OutputHub()
+        {
+            Console.WriteLine("OutputHub created");            
+        }
+
         public async Task OutputChanged(bool value)
         {
             Console.WriteLine($"OutputChanged: {value}");
-            await Clients.All.SendAsync("OutputChanged", value);
+            await Clients.All.OutputChanged(value);
         }
     }
 }

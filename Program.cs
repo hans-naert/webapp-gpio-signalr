@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddSignalR();
+builder.Services.AddHostedService<GpioHostedService>();
 builder.Services.AddSingleton<GpioController>(s =>
 {
     var controller = new GpioController();

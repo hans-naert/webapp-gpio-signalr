@@ -9,6 +9,13 @@ connection.on("Output18", function (value) {
     document.getElementById("checkbox_output18").checked=value;
 });
 
+connection.on("PinValueChanged", function (pin, value) {
+    console.log(`Input ${pin} received, value is ${value}`)
+    if(pin==17)
+        document.getElementById("checkbox_input17").checked=value;
+});
+
+
 connection.start().then(function () {
     document.getElementById("submit_button").disabled = false;
 }).catch(function (err) {
@@ -21,5 +28,5 @@ document.getElementById("submit_button").addEventListener("click", function (eve
     connection.invoke("OutputChanged", value).catch(function (err) {
         return console.error(err.toString());
     });
-    //event.preventDefault();
+    event.preventDefault();
 });

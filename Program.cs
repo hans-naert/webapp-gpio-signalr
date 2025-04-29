@@ -43,4 +43,7 @@ app.UseAuthorization();
 app.MapRazorPages();
 app.MapHub<ChatHub>("/chatHub");
 
+// Force instantiation of GpioController at startup
+var gpio = app.Services.GetRequiredService<GpioController>();
+
 app.Run();

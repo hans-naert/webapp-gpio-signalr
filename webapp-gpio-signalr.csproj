@@ -6,7 +6,7 @@
     <RootNamespace>webapp_gpio_signalr</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Iot.device.bindings" Version="3.0.0" />
-    <PackageReference Include="System.device.gpio" Version="3.0.0" />
+    <PackageReference Include="Iot.device.bindings" Version="4.2.0" />
+    <PackageReference Include="System.device.gpio" Version="4.2.0" />
   </ItemGroup>
 </Project>
